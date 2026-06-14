@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Signal Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🚦 Traffic Signal Detector</h1>
+            <p class="subtitle">Real-time traffic light color detection using computer vision</p>
+        </header>
+        <!-- Main Content -->
+        <main>
+            <!-- Video Feed Section -->
+            <section class="video-section">
+                <div class="video-container">
+                    <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Live Video Feed">
+                    <div class="video-overlay" id="video-overlay">
+                        <span>Loading camera...</span>
+                    </div>
+                </div>
+            </section>
+            <!-- Detection Status Section -->
+            <section class="status-section">
+                <div class="status-card">
+                    <h2>Detected Signal</h2>
+                    
+                    <!-- Traffic Light Indicator -->
+                    <div class="traffic-light">
+                        <div class="light red" id="light-red"></div>
+                        <div class="light yellow" id="light-yellow"></div>
+                        <div class="light green" id="light-green"></div>
+                    </div>
+                    <!-- Color Display -->
+                    <div class="color-display" id="color-display">
+                        <span class="color-text" id="color-text">None</span>
+                    </div>
+                    <!-- Confidence Meter -->
+                    <div class="confidence-section">
+                        <label>Detection Confidence</label>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidence-fill"></div>
+                        </div>
+                        <span class="confidence-value" id="confidence-value">0%</span>
+                    </div>
+                </div>
+                <!-- Audio Control -->
+                <div class="audio-control">
+                    <label class="toggle-container">
+                        <input type="checkbox" id="audio-toggle" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">🔊 Audio Alerts</span>
+                    </label>
+                </div>
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3>📋 Instructions</h3>
+                    <ul>
+                        <li>Point your camera at a traffic light or colored object</li>
+                        <li>The system detects <strong>Red</strong>, <strong>Yellow</strong>, and <strong>Green</strong></li>
+                        <li>Audio alerts play when the detected color changes</li>
+                        <li>Toggle the switch above to enable/disable audio</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer>
+            <p>Built with Python, Flask, and OpenCV</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
